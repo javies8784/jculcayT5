@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="jculcayS5.Views.Vpersona"
+             Title="Vpersona">
+    
+    
+    <ScrollView>
+    <VerticalStackLayout Padding="25,20,20,20">
+        <Label 
+            Text="Base de datos SQLITE"
+            FontSize="24"
+            TextColor="#1866A7"
+            HorizontalOptions="Center" />
+
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label Text="ID:"
+                   FontSize="12"
+                   Grid.Row="0"
+                   Grid.Column="0"/>
+            <Entry x:Name="txtId"
+                   Placeholder="ingrese un id"
+                   IsReadOnly="True"
+                   WidthRequest="150"
+                   HorizontalOptions="Start" 
+                   Grid.Row="0"
+                   Grid.Column="1"/>
+
+            <Label Text="Nombre:"
+                   FontSize="12"
+                   Grid.Row="1"
+                   Grid.Column="0"/>
+            <Entry x:Name="txtName"
+                   Placeholder="ingrese un nombre"
+                   HorizontalOptions="Start" 
+                   WidthRequest="150"
+                   Grid.Row="1"
+                   Grid.Column="1"/>
+
+
+        </Grid>
+
+        <Label Text=""/>
+
+        <Grid Padding="2,2,2,2">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />                
+            </Grid.RowDefinitions>            
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+                <ImageButton x:Name="btnInsertar"
+                             Source="anadir.png" 
+                             HeightRequest="20" 
+                             Clicked="btnInsertar_Clicked"
+                             Grid.Row="0"
+                             Grid.Column="0"/>
+
+             
+
+            <ImageButton x:Name="btnUpdate"
+                             Source="act.png" 
+                             HeightRequest="20" 
+                             Clicked="btnUpdate_Clicked"
+                             Grid.Row="0"
+                             Grid.Column="1"/>
+
+                <ImageButton x:Name="btnEliminar"
+                             Source="elim.png" 
+                             HeightRequest="20" 
+                             Clicked="btnEliminar_Clicked"
+                             Grid.Row="0"
+                            Grid.Column="2"/>
+
+
+            
+            <Label x:Name="lblStatus"
+                   Text="Message:"
+                   HorizontalOptions="Start" 
+                   Grid.Row="1"
+                   Grid.Column="0"/>
+
+                <ImageButton x:Name="btnObtener"
+                             Source="listar.png" 
+                             HeightRequest="20" 
+                             Clicked="btnObtener_Clicked"
+                             Grid.Row="2"
+                             HorizontalOptions="Start" 
+                            Grid.Column="0"/>
+
+       
+
+            
+
+        </Grid>
+        <Label Text=""/>
+        
+
+        <CollectionView x:Name="listaPersona" Grid.Row="3" Grid.Column="0"                         
+                        SelectionMode="Single"
+                        SelectionChanged="listaPersona_SelectionChanged"
+                        ItemsLayout="VerticalList"
+                        EmptyView="No data available"
+                       >
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    
+                        <VerticalStackLayout Background="white" Padding="5,5,5,5" Margin="5">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="txtid"  Text="{Binding Id}" Grid.Column="0" FontSize="18" />
+                        <Label Text="{Binding Name}" Grid.Column="1" FontSize="18"/>
+                        
+                      
+
+                    </Grid>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+
+
+        </CollectionView>
+
+
+
+    </VerticalStackLayout>
+
+    </ScrollView>
+
+
+</ContentPage>
