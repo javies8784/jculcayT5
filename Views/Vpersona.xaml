@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="jculcayS5.Views.Vpersona"
+             Title="Vpersona">
+    <VerticalStackLayout Spacing="25">
+        <Label 
+            Text="Base de datos SQLITE"
+            FontSize="24"
+            HorizontalOptions="Center" />
+
+        <Entry x:Name="txtName"
+               Placeholder="ingrese un nombre"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />                
+            </Grid.RowDefinitions>            
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnInsertar"
+                    Text="Insertar"
+                    Clicked="btnInsertar_Clicked"
+                    Grid.Row="0"
+                    Grid.Column="0"/>
+            <Button x:Name="btnUpdate"
+                    Text="Actualizar"
+                    Clicked="btnUpdate_Clicked"
+                    Grid.Row="0"
+                    Grid.Column="1"/>
+            <Button x:Name="btnEliminar"
+                    Text="Eliminar"
+                    
+                    Clicked="btnEliminar_Clicked"
+                    Grid.Row="0"
+                    Grid.Column="2"/>
+            
+            <Label x:Name="lblStatus"
+                   Grid.Row="1"
+                   Grid.Column="0"/>
+            
+            <Button x:Name="btnObtener"
+                    Text="ListarPersonas"
+                    Clicked="btnObtener_Clicked"
+                    Grid.Row="2"
+                    Grid.Column="0"/>
+
+            
+
+        </Grid>
+
+        <CollectionView ItemsSource="{ Binding Data}" x:Name="listaPersona" Grid.Row="3" Grid.Column="0" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="txtid"  Text="{Binding Id}" Grid.Column="0"/>
+                        <Label Text="{Binding Name}" Grid.Column="1"/>
+                        <ImageButton x:Name="bntActualizarCV"
+                                    Source="act.png" 
+                                   HeightRequest="20"
+                                   Command="{Binding  Path= BindingContext.RemoveEquipmentCommand,Source={Reference listaPersona }}"  CommandParameter="{Binding .}"
+                                   Grid.Column="2"/>
+
+                        <ImageButton x:Name="bntEliminarCV"
+                                    Source="elim.png" 
+                                   HeightRequest="20"                       
+                                   HorizontalOptions="Start"                                   
+                                   Grid.Column="3"/>
+                      
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+
+
+        </CollectionView>
+
+
+
+    </VerticalStackLayout>
+    
+    
+</ContentPage>
