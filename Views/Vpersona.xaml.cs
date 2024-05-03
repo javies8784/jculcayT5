@@ -20,14 +20,6 @@ public partial class Vpersona : ContentPage
     }
 
 
-    private void ReMoveItem(Persona obj)
-    {
-        DisplayAlert("Alerta", "Seleccione un estudiante", "Cerrar");
-        System.Diagnostics.Debug.WriteLine(" the selected item's name  is:  " + obj.Name);
-
-        Data.Remove(obj);
-    }
-
     private void btnInsertar_Clicked(object sender, EventArgs e)
     {
         lblStatus.Text = "";
