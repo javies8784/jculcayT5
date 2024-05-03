@@ -27,6 +27,7 @@ public partial class Vpersona : ContentPage
         lblStatus.Text = App.personRepo.StatusMessage;
 
         listar();
+        limpiar();
 
     }
 
