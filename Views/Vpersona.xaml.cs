@@ -8,14 +8,24 @@ public partial class Vpersona : ContentPage
 {
 
     public ObservableCollection<Persona> Data { get; set; }
-   
+
+    public ICommand RemoveEquipmentCommand => new Command<Persona>(ReMoveItem);
+
+   //public ICommand AddItemCommand => new Command(AddItems);
+
     public Vpersona()
 	{
 		InitializeComponent();
 
 	}
 
-   
+    private void ReMoveItem(Persona obj)
+    {
+        DisplayAlert("Alerta", "Seleccione un estudiante", "Cerrar");
+        System.Diagnostics.Debug.WriteLine(" the selected item's name  is:  " + obj.Name);
+
+        Data.Remove(obj);
+    }
 
     private void btnInsertar_Clicked(object sender, EventArgs e)
     {
@@ -28,30 +38,21 @@ public partial class Vpersona : ContentPage
 
     private void btnObtener_Clicked(object sender, EventArgs e)
     {
-        listar();
-
-    }
-
-    public void listar() {
-       // lblStatus.Text = "";
         List<Persona> people = App.personRepo.GetAllPeople();
         listaPersona.ItemsSource = people;
     }
     public void limpiar() {
         txtId.Text = "";
         txtName.Text = "";
-        
+
     }
 
 
 
     private void btnUpdate_Clicked(object sender, EventArgs e)
     {
-        lblStatus.Text = "";        
-        if (!String.IsNullOrEmpty(txtId.Text))
-        {
-            App.personRepo.UpdatePerson(Int32.Parse(txtId.Text), txtName.Text);
-            lblStatus.Text = App.personRepo.StatusMessage;
+        lblStatus.Text = "";
+        lblStatus.Text = App.personRepo.StatusMessage;
             listar();
             limpiar();
 
@@ -73,18 +74,14 @@ public partial class Vpersona : ContentPage
             listar();
             limpiar();
 
-        }
+    }
         else
         {
             DisplayAlert("Alerta", "Tiene que seleccionar un registro para eliminar", "Cerrar");
         }
     }
 
-    private void listaPersona_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var itemSelect = e.CurrentSelection[0] as Persona;
-        if (itemSelect != null)
-        {
             txtId.Text = itemSelect.Id.ToString();
             txtName.Text = itemSelect.Name.ToString();
 

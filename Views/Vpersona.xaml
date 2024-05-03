@@ -3,10 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="jculcayS5.Views.Vpersona"
              Title="Vpersona">
-    
-    
-    <ScrollView>
-    <VerticalStackLayout Padding="25,20,20,20">
         <Label 
             Text="Base de datos SQLITE"
             FontSize="24"
@@ -43,19 +39,8 @@
                    FontSize="12"
                    Grid.Row="1"
                    Grid.Column="0"/>
-            <Entry x:Name="txtName"
-                   Placeholder="ingrese un nombre"
-                   HorizontalOptions="Start" 
-                   WidthRequest="150"
-                   Grid.Row="1"
-                   Grid.Column="1"/>
+        <Entry x:Name="txtName"
 
-
-        </Grid>
-
-        <Label Text=""/>
-
-        <Grid Padding="2,2,2,2">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition/>
@@ -70,29 +55,22 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-                <ImageButton x:Name="btnInsertar"
-                             Source="anadir.png" 
-                             HeightRequest="20" 
-                             Clicked="btnInsertar_Clicked"
-                             Grid.Row="0"
-                             Grid.Column="0"/>
-
-             
-
-            <ImageButton x:Name="btnUpdate"
-                             Source="act.png" 
-                             HeightRequest="20" 
-                             Clicked="btnUpdate_Clicked"
-                             Grid.Row="0"
-                             Grid.Column="1"/>
-
+                    Clicked="btnInsertar_Clicked"
+                    Grid.Row="0"
+                    Grid.Column="0"/>
+                    Clicked="btnUpdate_Clicked"
+                    Grid.Row="0"
+                    Grid.Column="1"/>
+            <Button x:Name="btnEliminar"
+                    Text="Eliminar"
+                    
                 <ImageButton x:Name="btnEliminar"
                              Source="elim.png" 
                              HeightRequest="20" 
-                             Clicked="btnEliminar_Clicked"
-                             Grid.Row="0"
-                            Grid.Column="2"/>
-
+                    Clicked="btnEliminar_Clicked"
+                    Grid.Row="0"
+                    Grid.Column="2"/>
+            
 
             
             <Label x:Name="lblStatus"
@@ -100,16 +78,13 @@
                    HorizontalOptions="Start" 
                    Grid.Row="1"
                    Grid.Column="0"/>
-
-                <ImageButton x:Name="btnObtener"
-                             Source="listar.png" 
-                             HeightRequest="20" 
-                             Clicked="btnObtener_Clicked"
-                             Grid.Row="2"
+            
+                    Clicked="btnObtener_Clicked"
+                    Grid.Row="2"
                              HorizontalOptions="Start" 
-                            Grid.Column="0"/>
+                    Grid.Column="0"/>
 
-       
+            
 
             
 
@@ -123,27 +98,23 @@
                         ItemsLayout="VerticalList"
                         EmptyView="No data available"
                        >
-            
+
+        <CollectionView ItemsSource="{ Binding Data}" x:Name="listaPersona" Grid.Row="3" Grid.Column="0" SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    
-                        <VerticalStackLayout Background="white" Padding="5,5,5,5" Margin="5">
-                    <Grid >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <Label x:Name="txtid"  Text="{Binding Id}" Grid.Column="0" FontSize="18" />
-                        <Label Text="{Binding Name}" Grid.Column="1" FontSize="18"/>
-                        
+
+                        <ImageButton x:Name="bntEliminarCV"
+                                    Source="elim.png" 
+                                   HeightRequest="20"                       
+                                   HorizontalOptions="Start"                                   
+                                   Grid.Column="3"/>
                       
 
                     </Grid>
                         </VerticalStackLayout>
-                    </DataTemplate>
+                </DataTemplate>
             </CollectionView.ItemTemplate>
 
 
@@ -153,8 +124,8 @@
 
 
     </VerticalStackLayout>
-
+    
     </ScrollView>
 
-
+    
 </ContentPage>
