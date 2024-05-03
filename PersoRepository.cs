@@ -45,7 +45,7 @@ namespace jculcayS5
 
             }
         }
-
+        public void UpdatePerson(int ids, string names)
         {
             int result = 0;
             try
@@ -53,6 +53,7 @@ namespace jculcayS5
                 Init();
                 if (string.IsNullOrEmpty(names))
                     throw new Exception("Nombre es requerido");
+                Persona person = new() { Id = ids, Name = names };
                 result = conn.Update(person);
                 StatusMessage = string.Format("Se Modifico la persona", result, names);
 
